@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <title>minimal dojo</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+</head>
+<body>
+  <div id="widgets-container"></div>
+  
+  <script>
+        var dojoConfig = {
+            async: true,
+			      baseUrl: '.',
+            packages: [
+              {
+                  name: 'widgets',
+                  location: location.pathname.replace(/\/[^/]*$/, '') + '/widgets'
+              },
+              {
+                  name: 'dojo',
+                  location: location.pathname.replace(/\/[^/]*$/, '') + '/dojo-lib-1.8.14/dojo'
+              },
+              {
+                  name: 'dijit',
+                  location: location.pathname.replace(/\/[^/]*$/, '') + '/dojo-lib-1.8.14/dijit'
+              },
+              {
+                  name: 'dojox',
+                  location: location.pathname.replace(/\/[^/]*$/, '') + '/dojo-lib-1.8.14/dojox'
+              }
+            ]
+        };
+    </script>
+  <script src="./dojo-lib-1.8.14/dojo/dojo.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>
