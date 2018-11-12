@@ -9,6 +9,9 @@ define([
     'dijit/form/Button',
     'dijit/Dialog',
 
+    // epi
+    'epi-cms/widget/_HasChildDialogMixin',
+
     // custom
     'dojo/text!./templates/ButtonAndDialogWidget.html'
   ], 
@@ -23,10 +26,13 @@ define([
     dijitButton,
     dijitDialog,
 
+    // epi
+    _HasChildDialogMixin,
+
     // custom
     template
   ) {
-    return declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin],
+    return declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin, _HasChildDialogMixin],
       {
         templateString: template,
 
@@ -38,10 +44,11 @@ define([
             content: 'Dialog content',
             style: 'width: 200px;',
             onClose: function() {
-              widgetContext.onFocus();
+              widgetContext.isShowingChildDialog = false;
             }
           });
 
+          widgetContext.isShowingChildDialog = true;
           dialog.show();
         }
       }
