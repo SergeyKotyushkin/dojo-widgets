@@ -5,18 +5,28 @@ require([
     
     // custom
     'widgets/SimpleWidget',
+    'widgets/ButtonAndDialogWidget',
+
+    'dojo/domReady!'
   ], function(
     // dojo
     dojoDom,
     dojoDomConstruct,
-    
+
     // custom
-    SimpleWidget
+    SimpleWidget,
+    ButtonAndDialogWidget,
+
+    dojoDomReady
   ) {
-    var simpleWidget = new SimpleWidget();
+    var widgets = [];
+    widgets.push(new SimpleWidget());
+    widgets.push(new ButtonAndDialogWidget());
     
     var pageWrapperNode = dojoDom.byId('widgets-container');
-    dojoDomConstruct.place(simpleWidget.domNode, pageWrapperNode, 'last');
-    dojoDomConstruct.place('<hr/>', pageWrapperNode, 'last');
+    widgets.forEach(function(widget) {
+        widget.placeAt(pageWrapperNode);
+        dojoDomConstruct.place('<hr/>', pageWrapperNode);
+    });
   }
 )
